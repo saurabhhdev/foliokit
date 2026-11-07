@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Check, Copy } from 'lucide-react'
+import { Check, Copy, ExternalLink } from 'lucide-react'
 
 const installCommand = 'npx create-foliokit'
 
@@ -30,7 +30,7 @@ export function FinalCta() {
         One command away from your <span>own portfolio.</span>
       </h2>
       <p className="final-cta-description">
-        Ship your very own portfolio now !
+        Get your portfolio now.
       </p>
       <div className="hero-cmd-box final-cta-command">
         <span className="hero-cmd-prefix" aria-hidden="true">$</span>
@@ -45,6 +45,15 @@ export function FinalCta() {
           <span>{copied ? 'Copied' : 'Copy'}</span>
         </button>
       </div>
+      <a
+        className="final-cta-example"
+        href="https://saurabhhdev.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span>See a live example</span>
+        <ExternalLink size={11} aria-hidden="true" />
+      </a>
     </section>
   )
 }

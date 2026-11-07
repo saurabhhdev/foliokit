@@ -68,7 +68,7 @@ export function WhatsInside() {
             Everything You Need<span>.</span>
           </h2>
           <p className="section-subtitle">
-            A complete set of sections for telling your professional story.
+            Everything a portfolio needs.
           </p>
         </header>
 

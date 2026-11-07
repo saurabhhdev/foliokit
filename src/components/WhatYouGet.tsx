@@ -3,6 +3,11 @@ import { FlaticonIcon } from './FlaticonIcon'
 export function WhatYouGet() {
   const features = [
     {
+      icon: <FlaticonIcon name="terminal" />,
+      title: 'One Command Setup',
+      description: 'Create a working portfolio with a single command.',
+    },
+    {
       icon: <FlaticonIcon name="file-code" />,
       title: 'TypeScript Ready',
       description: 'Built with TypeScript for a structured, maintainable experience.',
@@ -23,11 +28,6 @@ export function WhatYouGet() {
       description: 'Personalize your portfolio through a simple data.ts file.',
     },
     {
-      icon: <FlaticonIcon name="pencil" />,
-      title: 'Ready to Customize',
-      description: 'Start with a working structure and make it your own.',
-    },
-    {
       icon: <FlaticonIcon name="laptop-code" />,
       title: 'Developer Focused',
       description: 'A simple way to showcase your work and online presence.',
@@ -41,7 +41,7 @@ export function WhatYouGet() {
           What You Get<span>.</span>
         </h2>
         <p className="section-subtitle">
-          The benefits that make FolioKit a simple foundation for your portfolio.
+          The benefits that make foliokit not just an empty page.
         </p>
       </header>
 

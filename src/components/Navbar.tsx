@@ -1,9 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { GitHubIcon } from './Icons'
 
+type Theme = 'dark' | 'light'
+
 export function Navbar() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  const [theme, setTheme] = useState<Theme>(() => {
+    try {
+      return window.localStorage.getItem('foliokit-theme') === 'light' ? 'light' : 'dark'
+    } catch {
+      return 'dark'
+    }
+  })
+  const themeTransitionTimeout = useRef<number | null>(null)
 
   useEffect(() => {
     if (theme === 'light') {
@@ -11,11 +20,38 @@ export function Navbar() {
     } else {
       document.documentElement.removeAttribute('data-theme')
     }
-    localStorage.setItem('foliokit-theme', theme)
+    try {
+      window.localStorage.setItem('foliokit-theme', theme)
+    } catch {
+      // Theme switching still works when browser storage is unavailable.
+    }
   }, [theme])
 
+  useEffect(() => () => {
+    if (themeTransitionTimeout.current !== null) {
+      window.clearTimeout(themeTransitionTimeout.current)
+    }
+  }, [])
+
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+    const root = document.documentElement
+    const nextTheme = theme === 'dark' ? 'light' : 'dark'
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const transitionDuration = reduceMotion ? 0 : 600
+
+    if (themeTransitionTimeout.current !== null) {
+      window.clearTimeout(themeTransitionTimeout.current)
+    }
+
+    root.classList.remove('theme-light-enter-down', 'theme-dark-enter-up')
+    root.classList.add('theme-transitioning')
+    root.classList.add(nextTheme === 'light' ? 'theme-light-enter-down' : 'theme-dark-enter-up')
+    setTheme(nextTheme)
+
+    themeTransitionTimeout.current = window.setTimeout(() => {
+      root.classList.remove('theme-transitioning', 'theme-light-enter-down', 'theme-dark-enter-up')
+      themeTransitionTimeout.current = null
+    }, transitionDuration)
   }
 
   return (
@@ -23,9 +59,8 @@ export function Navbar() {
       {/* Minimal Brand Wordmark with clean version tag */}
       <a href="#" className="nav-wordmark" aria-label="FolioKit Home">
         <span className="brand-text">
-          <span>Folio</span><span className="brand-kit">Kit</span>
+          <span>folio</span><span className="brand-kit">kit.</span>
         </span>
-        <span className="brand-version-tag">v1.0.0</span>
       </a>
 
       {/* Right-aligned minimal action buttons matching reference */}

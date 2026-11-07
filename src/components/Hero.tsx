@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Copy, Check, ExternalLink } from 'lucide-react'
-import { GitHubIcon, NpmIcon } from './Icons'
+import { GitHubIcon } from './Icons'
 
 export function Hero() {
   const [copied, setCopied] = useState(false)
@@ -76,13 +76,13 @@ export function Hero() {
           </a>
 
           <a
-            href="https://www.npmjs.com/package/create-foliokit"
+            href="https://foliokit-template.vercel.app/"
             target="_blank"
             rel="noopener noreferrer"
             className="hero-link-btn"
+            aria-label="See FolioKit in action"
           >
-            <NpmIcon size={12} />
-            <span>npm v1.0.0</span>
+            <span>See in action</span>
             <ExternalLink size={9} style={{ opacity: 0.5 }} />
           </a>
         </div>

@@ -1,36 +1,39 @@
-# FolioKit Official Website
+# FolioKit Website
 
-Official product documentation website for [FolioKit](https://www.npmjs.com/package/create-foliokit) (`create-foliokit`).
+The official website for [FolioKit](https://www.npmjs.com/package/create-foliokit), a CLI that scaffolds customizable developer portfolios.
 
-Designed with a minimal obsidian aesthetic, dark neon green accents (`#00E575`), and dotted-line framing inspired by [saurabhhdev.vercel.app](https://saurabhhdev.vercel.app/).
+## Stack
 
-## Tech Stack
+- React 19 and TypeScript
+- Vite 8
+- Lucide React icons and CSS
+- External assets: Google Fonts, Flaticon UI icons, and Skill Icons
 
-- **Framework**: [React 19](https://react.dev)
-- **Language**: [TypeScript](https://www.typescriptlang.org)
-- **Bundler**: [Vite](https://vitejs.dev)
-- **Icons**: [Lucide React](https://lucide.dev)
-- **Styling**: Modern CSS variables & CSS Grid
+## Requirements
 
-## Development
+Use Node.js 22.12.0 or later. No environment variables are required.
+
+## Local development
 
 ```bash
-# Install dependencies
-npm install
-
-# Start local dev server
+npm ci
 npm run dev
+```
 
-# Build for production
+## Production build
+
+```bash
 npm run build
-
-# Preview production build locally
 npm run preview
 ```
 
+The production output is written to `dist/`. The build script runs TypeScript project checks before Vite creates the production bundle.
+
 ## Deployment
 
-Zero-config deployment ready on [Vercel](https://vercel.com) or [Netlify](https://netlify.com).
+Deploy the repository root with `npm run build` as the build command and `dist` as the output directory. `vercel.json` configures Vite framework detection and SPA fallback for Vercel; other static hosts should publish `dist` and use an equivalent SPA fallback if needed.
+
+The production domain and social preview artwork have not been configured. Add the canonical URL and absolute Open Graph/Twitter image metadata in `index.html` once those are finalized. A sitemap should be added at that time if the site is deployed on a stable public domain.
 
 ## License
 

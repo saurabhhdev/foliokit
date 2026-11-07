@@ -139,7 +139,7 @@ export function CliCommands() {
         <div className="other-commands-options">
           <div className="other-commands-header">
             <h3 className="other-commands-title">Command options</h3>
-            <span className="other-commands-hint">Click to copy</span>
+            <span className="other-commands-hint">Use copy buttons</span>
           </div>
 
           <div className="other-commands-grid">
@@ -147,17 +147,6 @@ export function CliCommands() {
               <div
                 key={item.id}
                 className="other-command-row"
-                onClick={() => handleCopy(item.id, item.syntax)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    handleCopy(item.id, item.syntax)
-                  }
-                }}
-                title={`Click to copy: ${item.syntax}`}
-                aria-label={`Copy command ${item.syntax}`}
               >
                 <div className="other-command-terminal">
                   <div className="terminal-code-row">
@@ -167,10 +156,7 @@ export function CliCommands() {
                   <button
                     type="button"
                     className={`other-command-copy ${copiedId === item.id ? 'is-copied' : ''}`}
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      handleCopy(item.id, item.syntax)
-                    }}
+                    onClick={() => handleCopy(item.id, item.syntax)}
                     aria-label={`Copy ${item.syntax}`}
                   >
                     {copiedId === item.id ? (
