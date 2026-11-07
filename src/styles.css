@@ -326,9 +326,56 @@ h1, h2, h3, h4 {
 }
 
 .hero-tagline .accent-emerald {
-  color: var(--emerald);
-  text-shadow: 0 0 16px rgba(0, 229, 117, 0.32);
+  display: inline-block;
+  color: var(--neon);
   font-weight: 700;
+  position: relative;
+  text-shadow: 0 0 16px rgba(0, 229, 117, 0.4);
+}
+
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+  .hero-tagline .accent-emerald {
+    background-image: linear-gradient(
+      110deg,
+      #009449 0%,
+      #00e575 22%,
+      #66ffb2 40%,
+      #ffffff 50%,
+      #66ffb2 60%,
+      #00e575 78%,
+      #009449 100%
+    );
+    background-size: 200% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    animation: neon-shimmer 2.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(0, 229, 117, 0.45));
+    will-change: background-position, filter;
+  }
+}
+
+@keyframes neon-shimmer {
+  0% {
+    background-position: 200% 0;
+    filter: drop-shadow(0 0 8px rgba(0, 229, 117, 0.35));
+  }
+  50% {
+    background-position: 0% 0;
+    filter: drop-shadow(0 0 20px rgba(0, 229, 117, 0.85)) drop-shadow(0 0 35px rgba(0, 229, 117, 0.4));
+  }
+  100% {
+    background-position: -200% 0;
+    filter: drop-shadow(0 0 8px rgba(0, 229, 117, 0.35));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-tagline .accent-emerald {
+    animation: none;
+    background-position: 0% 0;
+  }
 }
 
 .hero-description {
