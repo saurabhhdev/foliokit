@@ -17,10 +17,12 @@
   --elevated: #1a1a1a;
   --secondary: #141414;
 
-  /* Primary Accent: Muted Emerald Green */
-  --emerald: #7CBAA5;
-  --emerald-hover: #96D1BE;
-  --lime: #7CBAA5; /* Theme alias for consistent component rendering */
+  /* Primary Accent: Dark Neon Green */
+  --neon: #00E575;
+  --neon-hover: #00FF85;
+  --neon-glow: rgba(0, 229, 117, 0.16);
+  --emerald: #00E575;
+  --lime: #00E575;
 
   /* Text & Borders */
   --warm-white: #E8E8E8;
@@ -325,6 +327,7 @@ h1, h2, h3, h4 {
 
 .hero-tagline .accent-emerald {
   color: var(--emerald);
+  text-shadow: 0 0 16px rgba(0, 229, 117, 0.32);
   font-weight: 700;
 }
 

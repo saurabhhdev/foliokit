@@ -2,7 +2,7 @@
 
 Official product documentation website for [FolioKit](https://www.npmjs.com/package/create-foliokit) (`create-foliokit`).
 
-Designed with a minimal obsidian aesthetic, muted emerald accents (`#7CBAA5`), and dotted-line framing inspired by [saurabhhdev.vercel.app](https://saurabhhdev.vercel.app/).
+Designed with a minimal obsidian aesthetic, dark neon green accents (`#00E575`), and dotted-line framing inspired by [saurabhhdev.vercel.app](https://saurabhhdev.vercel.app/).
 
 ## Tech Stack
 
