@@ -42,22 +42,22 @@ export function CliCommands() {
     {
       id: 'help',
       syntax: 'foliokit --help',
-      description: 'Display CLI syntax, options, and available flags',
+      description: 'Display CLI options, syntax, and available flags',
     },
     {
       id: 'version',
       syntax: 'foliokit --version',
-      description: 'Output the currently installed version of FolioKit',
+      description: 'Output the currently installed FolioKit version',
     },
     {
       id: 'create',
       syntax: 'foliokit create',
-      description: 'Start the project setup wizard explicitly',
+      description: 'Launch the interactive creation wizard explicitly',
     },
     {
       id: 'global',
       syntax: 'npm install -g create-foliokit',
-      description: 'Install globally to use foliokit without npx',
+      description: 'Install globally across system to run without npx',
     },
     {
       id: 'build',
@@ -67,7 +67,7 @@ export function CliCommands() {
     {
       id: 'preview',
       syntax: 'npm run preview',
-      description: 'Test the production build output locally',
+      description: 'Test production build output on a local server',
     },
   ]
 
@@ -139,20 +139,25 @@ export function CliCommands() {
         ))}
       </div>
 
-      {/* 2. Other Commands & Options (Minimal & User-Friendly) */}
+      {/* 2. Other Commands & Options (Ultra-Minimal Cheatsheet) */}
       <div className="other-commands-section">
         <div className="other-commands-header">
-          <h3 className="other-commands-title">
-            Other commands &amp; options<span>.</span>
-          </h3>
-          <span className="other-commands-hint">Click any row to copy</span>
+          <div>
+            <h3 className="other-commands-title">
+              Other commands &amp; options<span>.</span>
+            </h3>
+            <p className="other-commands-desc">
+              Secondary subcommands, runtime flags, and project scripts.
+            </p>
+          </div>
+          <span className="other-commands-hint">Click row to copy</span>
         </div>
 
-        <div className="other-commands-list">
+        <div className="other-commands-grid">
           {otherCommands.map((item) => (
             <div
               key={item.id}
-              className="other-command-item"
+              className="other-command-row"
               onClick={() => handleCopy(item.id, item.syntax)}
               role="button"
               tabIndex={0}
@@ -165,11 +170,8 @@ export function CliCommands() {
               title={`Click to copy: ${item.syntax}`}
               aria-label={`Copy command ${item.syntax}`}
             >
-              <div className="other-command-left">
-                <code className="other-command-code">{item.syntax}</code>
-                <span className="other-command-text">{item.description}</span>
-              </div>
-
+              <code className="other-command-syntax">{item.syntax}</code>
+              <span className="other-command-desc">{item.description}</span>
               <button
                 type="button"
                 className={`other-command-copy ${copiedId === item.id ? 'is-copied' : ''}`}
