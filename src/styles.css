@@ -17,12 +17,12 @@
   --elevated: #1a1a1a;
   --secondary: #141414;
 
-  /* Primary Accent: Dark Neon Green */
-  --neon: #00E575;
-  --neon-hover: #00FF85;
-  --neon-glow: rgba(0, 229, 117, 0.16);
-  --emerald: #00E575;
-  --lime: #00E575;
+  /* Primary Accent: Deep Dark Green */
+  --neon: #00A854;
+  --neon-hover: #00C863;
+  --neon-glow: rgba(0, 168, 84, 0.16);
+  --emerald: #00A854;
+  --lime: #00A854;
 
   /* Text & Borders */
   --warm-white: #E8E8E8;
@@ -167,6 +167,11 @@ h1, h2, h3, h4 {
   background: rgba(8, 8, 8, 0.94);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  transition: border-color var(--interaction-duration) var(--interaction-ease);
+}
+
+.site-header:hover {
+  border-bottom-color: var(--frame-dot-hover);
 }
 
 /* Minimal Clean Wordmark */
@@ -176,21 +181,31 @@ h1, h2, h3, h4 {
   gap: 8px;
   text-decoration: none;
   line-height: 1;
+  transition: transform var(--interaction-duration) var(--interaction-ease);
+}
+
+.nav-wordmark:hover {
+  transform: translateY(-0.5px);
 }
 
 .brand-text {
   font: 700 17px/1 var(--heading-font);
   letter-spacing: -0.03em;
   color: var(--warm-white);
-  transition: opacity var(--interaction-duration) var(--interaction-ease);
+  transition: color var(--interaction-duration) var(--interaction-ease);
 }
 
 .nav-wordmark:hover .brand-text {
-  opacity: 0.85;
+  color: #FFFFFF;
 }
 
 .brand-kit {
-  color: var(--neon);
+  color: var(--emerald);
+  transition: color var(--interaction-duration) var(--interaction-ease);
+}
+
+.nav-wordmark:hover .brand-kit {
+  color: var(--neon-hover);
 }
 
 /* Simplified Minimal Version Tag */
@@ -206,12 +221,14 @@ h1, h2, h3, h4 {
   line-height: 1;
   user-select: none;
   transition: border-color var(--interaction-duration) var(--interaction-ease),
+              background var(--interaction-duration) var(--interaction-ease),
               color var(--interaction-duration) var(--interaction-ease);
 }
 
 .nav-wordmark:hover .brand-version-tag {
-  border-color: var(--border-light);
-  color: var(--warm-white);
+  border-color: var(--emerald);
+  color: var(--emerald);
+  background: color-mix(in srgb, var(--emerald) 10%, var(--surface));
 }
 
 /* Minimal Action Button Cluster */
@@ -236,22 +253,24 @@ h1, h2, h3, h4 {
   user-select: none;
   transition: background var(--interaction-duration) var(--interaction-ease),
               border-color var(--interaction-duration) var(--interaction-ease),
-              color var(--interaction-duration) var(--interaction-ease);
+              color var(--interaction-duration) var(--interaction-ease),
+              transform var(--interaction-duration) var(--interaction-ease);
 }
 
 .nav-btn:hover {
-  background: #1c1c1c;
-  border-color: #383838;
-  color: #FFFFFF;
+  background: var(--card);
+  border-color: var(--emerald);
+  color: var(--emerald);
+  transform: translateY(-1px);
 }
 
 .nav-btn:focus-visible {
   outline: none;
-  border-color: var(--neon);
+  border-color: var(--emerald);
 }
 
 .nav-btn:active {
-  transform: translateY(1px);
+  transform: translateY(0);
 }
 
 .nav-btn-icon {
@@ -306,7 +325,7 @@ h1, h2, h3, h4 {
 }
 
 [data-theme="light"] .brand-kit {
-  color: #00aa55;
+  color: #008744;
 }
 
 [data-theme="light"] .brand-version-tag {
@@ -316,8 +335,9 @@ h1, h2, h3, h4 {
 }
 
 [data-theme="light"] .nav-wordmark:hover .brand-version-tag {
-  border-color: #b0b0b8;
-  color: #111111;
+  border-color: #008744;
+  color: #008744;
+  background: rgba(0, 135, 68, 0.08);
 }
 
 [data-theme="light"] .nav-btn {
@@ -327,9 +347,10 @@ h1, h2, h3, h4 {
 }
 
 [data-theme="light"] .nav-btn:hover {
-  background: #f4f4f6;
-  border-color: #b8b8c0;
-  color: #000000;
+  background: #f0fdf4;
+  border-color: #008744;
+  color: #008744;
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
