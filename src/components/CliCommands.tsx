@@ -10,10 +10,8 @@ interface EssentialCommand {
 
 interface OtherCommand {
   id: string
-  name: string
   syntax: string
   description: string
-  copyable?: boolean
 }
 
 export function CliCommands() {
@@ -42,46 +40,34 @@ export function CliCommands() {
 
   const otherCommands: OtherCommand[] = [
     {
-      id: 'explicit-create',
-      name: 'Explicit create subcommand',
-      syntax: 'foliokit create',
-      description: 'Direct subcommand alternative to start the interactive wizard.',
-      copyable: true,
-    },
-    {
-      id: 'global-install',
-      name: 'Global CLI installation',
-      syntax: 'npm install -g create-foliokit',
-      description: 'Install globally to run the foliokit command directly from any terminal.',
-      copyable: true,
-    },
-    {
-      id: 'version-flag',
-      name: 'Print version flag',
-      syntax: 'foliokit --version',
-      description: 'Output the currently installed version string of the CLI.',
-      copyable: true,
-    },
-    {
-      id: 'help-flag',
-      name: 'CLI help flag',
+      id: 'help',
       syntax: 'foliokit --help',
-      description: 'Display available commands, argument syntax, and usage flags.',
-      copyable: true,
+      description: 'Display CLI syntax, options, and available flags',
     },
     {
-      id: 'build-script',
-      name: 'Production build script',
+      id: 'version',
+      syntax: 'foliokit --version',
+      description: 'Output the currently installed version of FolioKit',
+    },
+    {
+      id: 'create',
+      syntax: 'foliokit create',
+      description: 'Start the project setup wizard explicitly',
+    },
+    {
+      id: 'global',
+      syntax: 'npm install -g create-foliokit',
+      description: 'Install globally to use foliokit without npx',
+    },
+    {
+      id: 'build',
       syntax: 'npm run build',
-      description: 'Type checks, bundles with Vite, and generates SEO sitemap and robots.txt.',
-      copyable: true,
+      description: 'Compile TypeScript, bundle Vite, and generate SEO',
     },
     {
-      id: 'preview-script',
-      name: 'Local preview script',
+      id: 'preview',
       syntax: 'npm run preview',
-      description: 'Spin up a local static server to test production build output before deploy.',
-      copyable: true,
+      description: 'Test the production build output locally',
     },
   ]
 
@@ -153,46 +139,58 @@ export function CliCommands() {
         ))}
       </div>
 
-      {/* 2. Other Commands & Options */}
+      {/* 2. Other Commands & Options (Minimal & User-Friendly) */}
       <div className="other-commands-section">
         <div className="other-commands-header">
           <h3 className="other-commands-title">
             Other commands &amp; options<span>.</span>
           </h3>
-          <p className="other-commands-desc">
-            Secondary subcommands, runtime flags, and generated project scripts.
-          </p>
+          <span className="other-commands-hint">Click any row to copy</span>
         </div>
 
         <div className="other-commands-list">
           {otherCommands.map((item) => (
-            <div key={item.id} className="other-command-row">
-              <div className="other-command-main">
-                <div className="other-command-info">
-                  <span className="other-command-name">{item.name}</span>
-                  <span className="other-command-sep" aria-hidden="true">·</span>
-                  <span className="other-command-desc">{item.description}</span>
-                </div>
+            <div
+              key={item.id}
+              className="other-command-item"
+              onClick={() => handleCopy(item.id, item.syntax)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  handleCopy(item.id, item.syntax)
+                }
+              }}
+              title={`Click to copy: ${item.syntax}`}
+              aria-label={`Copy command ${item.syntax}`}
+            >
+              <div className="other-command-left">
+                <code className="other-command-code">{item.syntax}</code>
+                <span className="other-command-text">{item.description}</span>
               </div>
 
-              <div className="other-command-action">
-                <code className="other-command-syntax">{item.syntax}</code>
-                {item.copyable && (
-                  <button
-                    type="button"
-                    className={`other-copy-btn ${copiedId === item.id ? 'is-copied' : ''}`}
-                    onClick={() => handleCopy(item.id, item.syntax)}
-                    title={`Copy ${item.syntax}`}
-                    aria-label={`Copy ${item.syntax}`}
-                  >
-                    {copiedId === item.id ? (
-                      <Check size={12} aria-hidden="true" />
-                    ) : (
-                      <Copy size={12} aria-hidden="true" />
-                    )}
-                  </button>
+              <button
+                type="button"
+                className={`other-command-copy ${copiedId === item.id ? 'is-copied' : ''}`}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  handleCopy(item.id, item.syntax)
+                }}
+                aria-label={`Copy ${item.syntax}`}
+              >
+                {copiedId === item.id ? (
+                  <>
+                    <Check size={11} aria-hidden="true" />
+                    <span>Copied</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={11} aria-hidden="true" />
+                    <span>Copy</span>
+                  </>
                 )}
-              </div>
+              </button>
             </div>
           ))}
         </div>
