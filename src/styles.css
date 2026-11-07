@@ -1280,6 +1280,14 @@ h1, h2, h3, h4 {
    ========================================================================== */
 
 @media (max-width: 768px) {
+  body {
+    --grid-line: rgba(82, 88, 90, 0.48);
+  }
+
+  [data-theme="light"] body {
+    --grid-line: rgba(69, 76, 78, 0.2);
+  }
+
   .content-section {
     padding: 18px 14px 16px;
     margin-block: 14px;
