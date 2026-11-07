@@ -1,63 +1,98 @@
 import { useState } from 'react'
 import { Copy, Check } from 'lucide-react'
 
-interface CommandItem {
+interface EssentialCommand {
+  step: string
+  title: string
+  command: string
+  description: string
+}
+
+interface OtherCommand {
   id: string
   name: string
+  syntax: string
   description: string
-  code: string
+  copyable?: boolean
 }
 
 export function CliCommands() {
   const [copiedId, setCopiedId] = useState<string | null>(null)
 
-  const commands: CommandItem[] = [
+  const essentialCommands: EssentialCommand[] = [
     {
-      id: 'npx-run',
-      name: 'Interactive Project Scaffolding (Recommended)',
-      description: 'Runs the interactive project creation wizard in your current directory without installing anything globally.',
-      code: 'npx create-foliokit',
+      step: '01',
+      title: 'Create your portfolio',
+      command: 'npx create-foliokit',
+      description: 'Run the interactive setup wizard to scaffold a complete portfolio in seconds.',
     },
     {
-      id: 'explicit-create',
-      name: 'Explicit Create Subcommand',
-      description: 'Alternative explicit subcommand syntax supported by Commander.js.',
-      code: 'foliokit create',
+      step: '02',
+      title: 'Enter project directory',
+      command: 'cd my-portfolio',
+      description: 'Navigate into your newly generated portfolio workspace.',
     },
     {
-      id: 'global-install',
-      name: 'Global Installation',
-      description: 'Install FolioKit globally to run the foliokit binary directly from anywhere.',
-      code: 'npm install -g create-foliokit\nfoliokit',
-    },
-    {
-      id: 'check-version',
-      name: 'Version Flag',
-      description: 'Prints the currently installed FolioKit version string.',
-      code: 'foliokit --version',
-    },
-    {
-      id: 'help-flag',
-      name: 'Help & Syntax Information',
-      description: 'Displays all available command options, arguments, and usage syntax in the terminal.',
-      code: 'foliokit --help',
-    },
-    {
-      id: 'start-dev',
-      name: 'Start Local Development',
-      description: 'Navigate into your newly generated portfolio directory and launch the Vite development server.',
-      code: 'cd my-portfolio\nnpm run dev',
+      step: '03',
+      title: 'Start development server',
+      command: 'npm run dev',
+      description: 'Launch the Vite dev server with instant hot reload at localhost:5173.',
     },
   ]
 
-  const handleCopy = async (id: string, code: string) => {
+  const otherCommands: OtherCommand[] = [
+    {
+      id: 'explicit-create',
+      name: 'Explicit create subcommand',
+      syntax: 'foliokit create',
+      description: 'Direct subcommand alternative to start the interactive wizard.',
+      copyable: true,
+    },
+    {
+      id: 'global-install',
+      name: 'Global CLI installation',
+      syntax: 'npm install -g create-foliokit',
+      description: 'Install globally to run the foliokit command directly from any terminal.',
+      copyable: true,
+    },
+    {
+      id: 'version-flag',
+      name: 'Print version flag',
+      syntax: 'foliokit --version',
+      description: 'Output the currently installed version string of the CLI.',
+      copyable: true,
+    },
+    {
+      id: 'help-flag',
+      name: 'CLI help flag',
+      syntax: 'foliokit --help',
+      description: 'Display available commands, argument syntax, and usage flags.',
+      copyable: true,
+    },
+    {
+      id: 'build-script',
+      name: 'Production build script',
+      syntax: 'npm run build',
+      description: 'Type checks, bundles with Vite, and generates SEO sitemap and robots.txt.',
+      copyable: true,
+    },
+    {
+      id: 'preview-script',
+      name: 'Local preview script',
+      syntax: 'npm run preview',
+      description: 'Spin up a local static server to test production build output before deploy.',
+      copyable: true,
+    },
+  ]
+
+  const handleCopy = async (id: string, text: string) => {
     try {
-      await navigator.clipboard.writeText(code)
+      await navigator.clipboard.writeText(text)
       setCopiedId(id)
       setTimeout(() => setCopiedId(null), 2000)
     } catch {
       const textarea = document.createElement('textarea')
-      textarea.value = code
+      textarea.value = text
       document.body.appendChild(textarea)
       textarea.select()
       document.execCommand('copy')
@@ -74,37 +109,34 @@ export function CliCommands() {
           Commands<span>.</span>
         </h2>
         <p className="section-subtitle">
-          All documented CLI commands and options supported by the FolioKit binary.
+          Essential CLI workflow and complete command reference.
         </p>
       </header>
 
-      <div className="commands-stack">
-        {commands.map((cmd) => (
-          <div key={cmd.id} className="command-card">
-            <div className="command-top-row">
-              <span className="command-name">{cmd.name}</span>
+      {/* 1. Essential Commands (Visual Focus) */}
+      <div className="essential-commands-stack">
+        {essentialCommands.map((cmd) => (
+          <div key={cmd.step} className="essential-command-card">
+            <div className="essential-command-top">
+              <div className="essential-command-meta">
+                <span className="essential-command-step">{cmd.step}</span>
+                <h3 className="essential-command-title">{cmd.title}</h3>
+              </div>
+              <p className="essential-command-desc">{cmd.description}</p>
             </div>
-            <p className="command-desc">{cmd.description}</p>
+
             <div className="terminal-container">
-              <code className="terminal-code">
-                {cmd.code.split('\n').map((line, i) => (
-                  <span key={i}>
-                    {line.startsWith('#') ? (
-                      <span className="dim">{line}</span>
-                    ) : (
-                      line
-                    )}
-                    {i < cmd.code.split('\n').length - 1 && '\n'}
-                  </span>
-                ))}
-              </code>
+              <div className="terminal-code-row">
+                <span className="terminal-prompt">$</span>
+                <code className="terminal-code">{cmd.command}</code>
+              </div>
               <button
                 type="button"
-                className={`copy-button ${copiedId === cmd.id ? 'is-copied' : ''}`}
-                onClick={() => handleCopy(cmd.id, cmd.code)}
-                aria-label={`Copy ${cmd.name}`}
+                className={`copy-button ${copiedId === cmd.step ? 'is-copied' : ''}`}
+                onClick={() => handleCopy(cmd.step, cmd.command)}
+                aria-label={`Copy ${cmd.command}`}
               >
-                {copiedId === cmd.id ? (
+                {copiedId === cmd.step ? (
                   <>
                     <Check size={12} aria-hidden="true" />
                     <span>Copied</span>
@@ -121,63 +153,49 @@ export function CliCommands() {
         ))}
       </div>
 
-      {/* Interactive Wizard Prompts Explanation */}
-      <div className="options-table-wrap">
-        <table className="options-table">
-          <thead>
-            <tr>
-              <th style={{ width: '30%' }}>Interactive Wizard Step</th>
-              <th style={{ width: '25%' }}>Prompt / Question</th>
-              <th>Details &amp; Fallbacks</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <code>Project Name</code>
-              </td>
-              <td>
-                <em>What should your project be called?</em>
-              </td>
-              <td>
-                Defaults to <code>my-portfolio</code>. Supports lowercase alphanumeric letters and single hyphens.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>Install Dependencies</code>
-              </td>
-              <td>
-                <em>Install dependencies? (Y/n)</em>
-              </td>
-              <td>
-                Runs <code>npm install</code> automatically inside the new folder with an interactive terminal spinner.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>Overwrite Safety</code>
-              </td>
-              <td>
-                <em>The folder already exists. Replace it?</em>
-              </td>
-              <td>
-                Prevents accidental overwrites. If declined, your existing project files are preserved untouched.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <code>Requirements</code>
-              </td>
-              <td>
-                <em>System Engines</em>
-              </td>
-              <td>
-                Node.js <code>&gt;=22.12.0</code> and npm <code>&gt;=10.0.0</code> on macOS, Windows, or Linux.
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      {/* 2. Other Commands & Options */}
+      <div className="other-commands-section">
+        <div className="other-commands-header">
+          <h3 className="other-commands-title">
+            Other commands &amp; options<span>.</span>
+          </h3>
+          <p className="other-commands-desc">
+            Secondary subcommands, runtime flags, and generated project scripts.
+          </p>
+        </div>
+
+        <div className="other-commands-list">
+          {otherCommands.map((item) => (
+            <div key={item.id} className="other-command-row">
+              <div className="other-command-main">
+                <div className="other-command-info">
+                  <span className="other-command-name">{item.name}</span>
+                  <span className="other-command-sep" aria-hidden="true">·</span>
+                  <span className="other-command-desc">{item.description}</span>
+                </div>
+              </div>
+
+              <div className="other-command-action">
+                <code className="other-command-syntax">{item.syntax}</code>
+                {item.copyable && (
+                  <button
+                    type="button"
+                    className={`other-copy-btn ${copiedId === item.id ? 'is-copied' : ''}`}
+                    onClick={() => handleCopy(item.id, item.syntax)}
+                    title={`Copy ${item.syntax}`}
+                    aria-label={`Copy ${item.syntax}`}
+                  >
+                    {copiedId === item.id ? (
+                      <Check size={12} aria-hidden="true" />
+                    ) : (
+                      <Copy size={12} aria-hidden="true" />
+                    )}
+                  </button>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )
