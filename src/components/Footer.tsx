@@ -38,7 +38,13 @@ export function Footer() {
       </div>
 
       <div className="footer-bottom-row">
-        <span>&copy; {new Date().getFullYear()} Saurabh Pandey. Distributed under the MIT License.</span>
+        <span>
+          &copy; {new Date().getFullYear()} Saurabh Pandey. Distributed under the MIT License.{' '}
+          <a href="https://www.flaticon.com/uicons" target="_blank" rel="noopener noreferrer">
+            Flaticon
+          </a>
+          .
+        </span>
         <span className="footer-attribution">
           Crafted with{' '}
           <img

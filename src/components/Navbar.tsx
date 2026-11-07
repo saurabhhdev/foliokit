@@ -3,13 +3,7 @@ import { Moon, Sun } from 'lucide-react'
 import { GitHubIcon } from './Icons'
 
 export function Navbar() {
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('foliokit-theme')
-      if (saved === 'light' || saved === 'dark') return saved
-    }
-    return 'dark'
-  })
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
 
   useEffect(() => {
     if (theme === 'light') {

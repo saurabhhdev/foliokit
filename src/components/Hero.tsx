@@ -25,7 +25,7 @@ export function Hero() {
 
   return (
     <section className="section-wrap" style={{ marginTop: '14px' }}>
-      <div className="hero-section dotted-frame">
+      <div className="hero-section">
         {/* Short, prominent tagline */}
         <h1 className="hero-tagline">
           Your portfolio, built with <span className="accent-emerald">one command</span>.
@@ -33,7 +33,7 @@ export function Hero() {
 
         {/* Concise one-sentence description */}
         <p className="hero-description">
-          FolioKit is a simple CLI that helps you to go from an empty folder to your own portfolio in one command .
+          create-foliokit is a simple CLI that helps you to go from an empty folder to your own portfolio in one command .
         </p>
 
         {/* Prominent installation command with copy button */}

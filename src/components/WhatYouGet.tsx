@@ -1,43 +1,36 @@
-import {
-  Terminal,
-  FileCode,
-  Layers,
-  Cpu,
-  Share2,
-  MessageSquareQuote,
-} from 'lucide-react'
+import { FlaticonIcon } from './FlaticonIcon'
 
 export function WhatYouGet() {
   const features = [
     {
-      icon: <Terminal size={18} />,
-      title: 'One-command setup',
-      description: 'Scaffold and install everything with a single npx command.',
+      icon: <FlaticonIcon name="file-code" />,
+      title: 'TypeScript Ready',
+      description: 'Built with TypeScript for a structured, maintainable experience.',
     },
     {
-      icon: <FileCode size={18} />,
-      title: 'Customization via data.ts',
-      description: 'Update your bio, skills, projects, and links without touching UI code.',
+      icon: <FlaticonIcon name="computer" />,
+      title: 'Fully Responsive',
+      description: 'Adapts smoothly to mobile, tablet, and desktop.',
     },
     {
-      icon: <Layers size={18} />,
-      title: 'Projects showcase',
-      description: 'Featured projects in an interactive 3D magazine carousel with live links.',
+      icon: <FlaticonIcon name="layout-fluid" />,
+      title: 'Modern & Minimal Design',
+      description: 'A clean layout focused on readability and simplicity.',
     },
     {
-      icon: <Cpu size={18} />,
-      title: 'Technical skills',
-      description: 'Crisp vector technology badges automatically integrated with hover tooltips.',
+      icon: <FlaticonIcon name="settings-sliders" />,
+      title: 'Easy Customization',
+      description: 'Personalize your portfolio through a simple data.ts file.',
     },
     {
-      icon: <Share2 size={18} />,
-      title: 'Social media icons',
-      description: 'Branded profile links with custom colors and direct platform URLs.',
+      icon: <FlaticonIcon name="pencil" />,
+      title: 'Ready to Customize',
+      description: 'Start with a working structure and make it your own.',
     },
     {
-      icon: <MessageSquareQuote size={18} />,
-      title: 'Testimonials section',
-      description: 'Structured quote cards to showcase peer endorsements and recommendations.',
+      icon: <FlaticonIcon name="laptop-code" />,
+      title: 'Developer Focused',
+      description: 'A simple way to showcase your work and online presence.',
     },
   ]
 
@@ -45,10 +38,10 @@ export function WhatYouGet() {
     <section className="content-section section-wrap" id="features">
       <header className="section-header">
         <h2 className="section-title">
-          What you get<span>.</span>
+          What You Get<span>.</span>
         </h2>
         <p className="section-subtitle">
-          Essential features included out of the box in every FolioKit portfolio.
+          The benefits that make FolioKit a simple foundation for your portfolio.
         </p>
       </header>
 

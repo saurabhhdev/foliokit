@@ -60,11 +60,6 @@ export function CliCommands() {
       description: 'Install globally across system to run without npx',
     },
     {
-      id: 'build',
-      syntax: 'npm run build',
-      description: 'Compile TypeScript, bundle Vite, and generate SEO',
-    },
-    {
       id: 'preview',
       syntax: 'npm run preview',
       description: 'Test production build output on a local server',
@@ -139,62 +134,87 @@ export function CliCommands() {
         ))}
       </div>
 
-      {/* 2. Other Commands & Options (Ultra-Minimal Cheatsheet) */}
-      <div className="other-commands-section">
-        <div className="other-commands-header">
-          <div>
-            <h3 className="other-commands-title">
-              Other commands &amp; options<span>.</span>
-            </h3>
-            <p className="other-commands-desc">
-              Secondary subcommands, runtime flags, and project scripts.
-            </p>
+      {/* 2. Compact command options and deployment panel */}
+      <div className="other-commands-layout">
+        <div className="other-commands-options">
+          <div className="other-commands-header">
+            <h3 className="other-commands-title">Command options</h3>
+            <span className="other-commands-hint">Click to copy</span>
           </div>
-          <span className="other-commands-hint">Click row to copy</span>
+
+          <div className="other-commands-grid">
+            {otherCommands.map((item) => (
+              <div
+                key={item.id}
+                className="other-command-row"
+                onClick={() => handleCopy(item.id, item.syntax)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    handleCopy(item.id, item.syntax)
+                  }
+                }}
+                title={`Click to copy: ${item.syntax}`}
+                aria-label={`Copy command ${item.syntax}`}
+              >
+                <div className="other-command-terminal">
+                  <div className="terminal-code-row">
+                    <span className="terminal-prompt" aria-hidden="true">$</span>
+                    <code className="terminal-code">{item.syntax}</code>
+                  </div>
+                  <button
+                    type="button"
+                    className={`other-command-copy ${copiedId === item.id ? 'is-copied' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleCopy(item.id, item.syntax)
+                    }}
+                    aria-label={`Copy ${item.syntax}`}
+                  >
+                    {copiedId === item.id ? (
+                      <>
+                        <Check size={11} aria-hidden="true" />
+                        <span>Copied</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={11} aria-hidden="true" />
+                        <span>Copy</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+                <span className="other-command-desc">{item.description}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="other-commands-grid">
-          {otherCommands.map((item) => (
-            <div
-              key={item.id}
-              className="other-command-row"
-              onClick={() => handleCopy(item.id, item.syntax)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  handleCopy(item.id, item.syntax)
-                }
-              }}
-              title={`Click to copy: ${item.syntax}`}
-              aria-label={`Copy command ${item.syntax}`}
-            >
-              <code className="other-command-syntax">{item.syntax}</code>
-              <span className="other-command-desc">{item.description}</span>
-              <button
-                type="button"
-                className={`other-command-copy ${copiedId === item.id ? 'is-copied' : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation()
-                  handleCopy(item.id, item.syntax)
-                }}
-                aria-label={`Copy ${item.syntax}`}
-              >
-                {copiedId === item.id ? (
-                  <>
-                    <Check size={11} aria-hidden="true" />
-                    <span>Copied</span>
-                  </>
-                ) : (
-                  <>
-                    <Copy size={11} aria-hidden="true" />
-                    <span>Copy</span>
-                  </>
-                )}
-              </button>
+        <div className="deploy-panel">
+          <h3 className="other-commands-title">Deploy</h3>
+          <p className="deploy-description">
+            Build your portfolio for production, then deploy it to Vercel, Netlify, or another static host.
+          </p>
+          <div className="terminal-container deploy-command">
+            <div className="terminal-code-row">
+              <span className="terminal-prompt">$</span>
+              <code className="terminal-code">npm run build</code>
             </div>
-          ))}
+            <button
+              type="button"
+              className={`other-command-copy deploy-copy${copiedId === 'deploy-build' ? ' is-copied' : ''}`}
+              onClick={() => handleCopy('deploy-build', 'npm run build')}
+              aria-label={copiedId === 'deploy-build' ? 'Build command copied' : 'Copy build command'}
+            >
+              {copiedId === 'deploy-build' ? (
+                <><Check size={12} aria-hidden="true" /><span>Copied</span></>
+              ) : (
+                <><Copy size={12} aria-hidden="true" /><span>Copy</span></>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </section>

@@ -3,7 +3,7 @@ import { Hero } from './components/Hero'
 import { WhatYouGet } from './components/WhatYouGet'
 import { CliCommands } from './components/CliCommands'
 import { WhatsInside } from './components/WhatsInside'
-import { Creator } from './components/Creator'
+import { FinalCta } from './components/FinalCta'
 import { Footer } from './components/Footer'
 
 export function App() {
@@ -19,7 +19,7 @@ export function App() {
         <hr className="section-divider" />
         <WhatsInside />
         <hr className="section-divider" />
-        <Creator />
+        <FinalCta />
       </main>
       <Footer />
     </div>

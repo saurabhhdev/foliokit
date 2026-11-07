@@ -1,24 +1,10 @@
-import {
-  UserCheck,
-  Sliders,
-  Layers,
-  Cpu,
-  Share2,
-  MessageSquareQuote,
-  Briefcase,
-  MonitorSmartphone,
-} from 'lucide-react'
-import {
-  ReactIcon,
-  TypeScriptIcon,
-  ViteIcon,
-  NodeIcon,
-  LucideIcon,
-  CssIcon,
-} from './Icons'
+import type { ReactNode } from 'react'
+import { LucideIcon } from './Icons'
+import { SkillIcon, type SkillIconId } from './SkillIcon'
+import { FlaticonIcon } from './FlaticonIcon'
 
 interface FeatureItem {
-  icon: typeof UserCheck
+  icon: ReactNode
   title: string
   description: string
 }
@@ -26,121 +12,125 @@ interface FeatureItem {
 interface TechStackItem {
   name: string
   version?: string
-  icon: typeof ReactIcon
+  icon?: typeof LucideIcon
+  skillId?: SkillIconId
   tagline: string
 }
 
 export function WhatsInside() {
   const features: FeatureItem[] = [
     {
-      icon: UserCheck,
+      icon: <FlaticonIcon name="user-tag" />,
       title: 'Ready-to-use portfolio',
-      description:
-        'Complete developer profile pre-configured with bio summary, headline, real-time IANA clock, and resume trigger.',
+      description: 'A complete developer profile with bio, headline, local time, and resume support.',
     },
     {
-      icon: Sliders,
-      title: 'Customization via data.ts',
-      description:
-        'Single central configuration file to update your personal details, links, and content without touching React code.',
+      icon: <FlaticonIcon name="briefcase" />,
+      title: 'Project showcase',
+      description: 'Present featured projects with demo and repository links in an interactive gallery.',
     },
     {
-      icon: Layers,
-      title: 'Projects showcase',
-      description:
-        'Interactive project showcase supporting live demo badges, repository links, and an optional 3D magazine perspective.',
+      icon: <FlaticonIcon name="code-simple" />,
+      title: 'Skills and technologies',
+      description: 'Group your skills with familiar technology icons and helpful labels.',
     },
     {
-      icon: Cpu,
-      title: 'Technical skills grid',
-      description:
-        'Categorized technology badges powered by skillicons.dev with built-in floating hover tooltips.',
+      icon: <FlaticonIcon name="share" />,
+      title: 'Contact and social profiles',
+      description: 'Share your professional profiles and make it easy to get in touch.',
     },
     {
-      icon: Share2,
-      title: 'Social media & contact',
-      description:
-        'Pre-wired branded profiles for GitHub, LinkedIn, X, and Instagram, paired with direct native email drafting.',
+      icon: <FlaticonIcon name="user-speaking" />,
+      title: 'Testimonials',
+      description: 'Show recommendations and feedback from colleagues, clients, or mentors.',
     },
     {
-      icon: MessageSquareQuote,
-      title: 'Testimonials wall',
-      description:
-        'Structured recommendation cards to highlight peer endorsements, client reviews, and mentor recommendations.',
-    },
-    {
-      icon: Briefcase,
-      title: 'Career & education',
-      description:
-        'Chronological timeline detailing employment milestones, organizations, key responsibilities, and academic degrees.',
-    },
-    {
-      icon: MonitorSmartphone,
-      title: 'Responsive portfolio layout',
-      description:
-        'Fluid mobile-first architecture engineered to read cleanly on smartphones, tablets, and wide desktop displays.',
+      icon: <FlaticonIcon name="graduation-cap" />,
+      title: 'Experience and education',
+      description: 'Present your career history and education in a clear timeline.',
     },
   ]
 
   const technologies: TechStackItem[] = [
-    { name: 'React 19', icon: ReactIcon, tagline: 'Modern React with fast component rendering' },
-    { name: 'TypeScript', icon: TypeScriptIcon, tagline: 'Strict typing and autocomplete in data.ts' },
-    { name: 'Vite', icon: ViteIcon, tagline: 'Instant HMR and optimized production bundles' },
-    { name: 'Lucide Icons', icon: LucideIcon, tagline: 'Consistent, clean vector iconography' },
-    { name: 'Node.js', version: '>=22', icon: NodeIcon, tagline: 'Fast automated SEO & sitemap script execution' },
-    { name: 'Modern CSS', icon: CssIcon, tagline: 'Native CSS tokens and 3D perspective gallery styling' },
+    { name: 'React', version: '19', skillId: 'react', tagline: 'UI framework used by the generated portfolio' },
+    { name: 'TypeScript', skillId: 'ts', tagline: 'Language used by the generated portfolio' },
+    { name: 'Vite', version: '8', skillId: 'vite', tagline: 'Bundler and development server' },
+    { name: 'Lucide React', icon: LucideIcon, tagline: 'Icon library used by the generated portfolio' },
+    { name: 'Simple Icons', icon: SimpleIconsMark, tagline: 'Technology and brand icons used in the portfolio' },
+    { name: 'Native CSS', skillId: 'css', tagline: 'CSS Grid, Flexbox, variables, and transforms' },
   ]
 
   return (
-    <section className="content-section section-wrap" id="inside">
-      {/* Section Header */}
-      <header className="section-header">
-        <h2 className="section-title">
-          Everything you need<span>.</span>
-        </h2>
-        <p className="section-subtitle">
-          Essential features included out of the box in every FolioKit portfolio, configured cleanly via data.ts.
-        </p>
-      </header>
+    <>
+      <section className="content-section section-wrap everything-section" id="inside">
+        <header className="section-header">
+          <h2 className="section-title">
+            Everything You Need<span>.</span>
+          </h2>
+          <p className="section-subtitle">
+            A complete set of sections for telling your professional story.
+          </p>
+        </header>
 
-      {/* Compact Structured Grid */}
-      <div className="everything-grid dotted-frame">
-        {features.map((item) => {
-          const Icon = item.icon
-          return (
-            <div key={item.title} className="everything-grid-cell">
-              <div className="everything-icon-box" aria-hidden="true">
-                <Icon size={16} />
-              </div>
-              <div className="everything-cell-content">
-                <h3 className="everything-cell-title">{item.title}</h3>
-                <p className="everything-cell-desc">{item.description}</p>
-              </div>
-            </div>
-          )
-        })}
-      </div>
-
-      {/* Understated "Built on" Subsection */}
-      <div className="built-on-bar">
-        <div className="built-on-label-wrap">
-          <span className="built-on-label">Built on</span>
-        </div>
-        <div className="built-on-chips-row">
-          {technologies.map((tech) => {
-            const Icon = tech.icon
+        <div className="everything-grid">
+          {features.map((item) => {
             return (
-              <div key={tech.name} className="built-on-chip" title={tech.tagline}>
-                <Icon size={13} className="built-on-icon" />
-                <span className="built-on-name">{tech.name}</span>
-                {tech.version && (
-                  <span className="built-on-version">{tech.version}</span>
-                )}
+              <div key={item.title} className="everything-grid-cell">
+                <div className="everything-icon-box" aria-hidden="true">
+                  {item.icon}
+                </div>
+                <div className="everything-cell-content">
+                  <h3 className="everything-cell-title">{item.title}</h3>
+                  <p className="everything-cell-desc">{item.description}</p>
+                </div>
               </div>
             )
           })}
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section className="content-section section-wrap built-on-section" aria-labelledby="built-on-title">
+        <div className="built-on-bar">
+          <div className="built-on-label-wrap">
+            <span className="built-on-label" id="built-on-title">Built on</span>
+          </div>
+          <div className="built-on-chips-row">
+            {technologies.map((tech) => {
+              const Icon = tech.icon
+              return (
+                <div key={tech.name} className="built-on-chip" title={tech.tagline}>
+                  {tech.skillId ? (
+                    <SkillIcon id={tech.skillId} className="built-on-icon built-on-skill-icon" />
+                  ) : Icon ? (
+                    <Icon size={13} className="built-on-icon" />
+                  ) : null}
+                  <span className="built-on-name">{tech.name}</span>
+                  {tech.version && (
+                    <span className="built-on-version">{tech.version}</span>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function SimpleIconsMark({ className, size = 14 }: { className?: string; size?: number }) {
+  return (
+    <svg
+      role="img"
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill="currentColor"
+      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="Simple Icons"
+    >
+      <path d="M4 4h16v4H8v2h12v10H4v-4h12v-2H4z" />
+    </svg>
   )
 }
