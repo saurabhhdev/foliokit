@@ -169,27 +169,86 @@ h1, h2, h3, h4 {
   -webkit-backdrop-filter: blur(12px);
 }
 
-/* Minimal Neo-style Wordmark */
+/* Distinct Brand Wordmark with Version Capsule */
 .nav-wordmark {
   display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.brand-text {
+  display: inline-flex;
   align-items: baseline;
-  font: 700 18px/1 var(--heading-font);
+  font: 700 17px/1 var(--heading-font);
   letter-spacing: -0.035em;
   color: var(--warm-white);
-  text-decoration: none;
   transition: opacity var(--interaction-duration) var(--interaction-ease);
 }
 
-.nav-wordmark:hover {
-  color: var(--warm-white);
-  opacity: 0.88;
+.nav-wordmark:hover .brand-text {
+  opacity: 0.92;
 }
 
-.nav-wordmark .wordmark-dot {
+.brand-kit {
   color: var(--neon);
-  margin: 0 0.5px;
-  text-shadow: 0 0 10px rgba(0, 229, 117, 0.5);
-  font-weight: 800;
+  text-shadow: 0 0 12px rgba(0, 229, 117, 0.45);
+  transition: text-shadow var(--interaction-duration) var(--interaction-ease);
+}
+
+.nav-wordmark:hover .brand-kit {
+  text-shadow: 0 0 16px rgba(0, 229, 117, 0.75);
+}
+
+/* Technical Version Chip */
+.brand-version-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 7px 0 6px;
+  border-radius: 9999px;
+  background: rgba(0, 229, 117, 0.08);
+  border: 1px solid rgba(0, 229, 117, 0.28);
+  color: #8affc2;
+  font-family: var(--mono-font);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  user-select: none;
+  transition: background var(--interaction-duration) var(--interaction-ease),
+              border-color var(--interaction-duration) var(--interaction-ease),
+              box-shadow var(--interaction-duration) var(--interaction-ease);
+}
+
+.nav-wordmark:hover .brand-version-badge {
+  background: rgba(0, 229, 117, 0.14);
+  border-color: rgba(0, 229, 117, 0.55);
+  box-shadow: 0 0 10px rgba(0, 229, 117, 0.22);
+}
+
+/* Pulsing Status Dot */
+.brand-live-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--neon);
+  box-shadow: 0 0 6px var(--neon);
+  animation: version-pulse 2s ease-in-out infinite;
+}
+
+@keyframes version-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(0, 229, 117, 0.9);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.85);
+    box-shadow: 0 0 2px rgba(0, 229, 117, 0.3);
+  }
 }
 
 /* Minimal Action Button Cluster */
@@ -284,12 +343,24 @@ h1, h2, h3, h4 {
   border-bottom: 1px dotted var(--frame-dot);
 }
 
-[data-theme="light"] .nav-wordmark {
+[data-theme="light"] .brand-text {
   color: #111111;
 }
 
-[data-theme="light"] .nav-wordmark:hover {
-  color: #111111;
+[data-theme="light"] .brand-kit {
+  color: #00aa55;
+  text-shadow: none;
+}
+
+[data-theme="light"] .brand-version-badge {
+  background: rgba(0, 170, 85, 0.08);
+  border-color: rgba(0, 170, 85, 0.25);
+  color: #00773a;
+}
+
+[data-theme="light"] .nav-wordmark:hover .brand-version-badge {
+  background: rgba(0, 170, 85, 0.14);
+  border-color: rgba(0, 170, 85, 0.45);
 }
 
 [data-theme="light"] .nav-btn {

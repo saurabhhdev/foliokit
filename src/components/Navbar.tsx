@@ -26,11 +26,16 @@ export function Navbar() {
 
   return (
     <header className="site-header">
-      {/* Brand Wordmark matching reference */}
+      {/* Brand Wordmark with distinct style & version badge */}
       <a href="#" className="nav-wordmark" aria-label="FolioKit Home">
-        <span className="wordmark-lead">folio</span>
-        <span className="wordmark-dot">.</span>
-        <span className="wordmark-tail">kit</span>
+        <span className="brand-text">
+          <span className="brand-folio">Folio</span>
+          <span className="brand-kit">Kit</span>
+        </span>
+        <span className="brand-version-badge">
+          <span className="brand-live-dot" aria-hidden="true" />
+          <span>v1.0.0</span>
+        </span>
       </a>
 
       {/* Right-aligned minimal action buttons matching reference */}

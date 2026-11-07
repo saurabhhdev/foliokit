@@ -6,9 +6,10 @@ export function Footer() {
       <div className="footer-top-row">
         <div className="footer-brand">
           <a href="#" className="nav-wordmark" aria-label="FolioKit Home">
-            <span className="wordmark-lead">folio</span>
-            <span className="wordmark-dot">.</span>
-            <span className="wordmark-tail">kit</span>
+            <span className="brand-text">
+              <span className="brand-folio">Folio</span>
+              <span className="brand-kit">Kit</span>
+            </span>
           </a>
           <p>A minimal, zero-config CLI portfolio generator for modern developers.</p>
         </div>
