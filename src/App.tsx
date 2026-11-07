@@ -12,7 +12,7 @@ export function App() {
       <Navbar />
       <main>
         <Hero />
-        <hr className="section-divider" style={{ marginTop: '28px' }} />
+        <hr className="section-divider" style={{ marginTop: '16px' }} />
         <WhatYouGet />
         <hr className="section-divider" />
         <CliCommands />

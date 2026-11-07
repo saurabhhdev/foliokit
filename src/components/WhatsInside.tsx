@@ -161,7 +161,7 @@ socialIcons: [
                 onClick={() => setActiveSectionId(sec.id)}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <Icon size={14} style={{ color: isActive ? 'var(--lime)' : 'var(--muted)' }} />
+                  <Icon size={14} style={{ color: isActive ? 'var(--emerald)' : 'var(--muted)' }} />
                   <span>{sec.title}</span>
                 </div>
                 <span className="tab-num">0{idx + 1}</span>

@@ -4,24 +4,16 @@ import { GitHubIcon, NpmIcon } from './Icons'
 
 export function Hero() {
   const [copied, setCopied] = useState(false)
-  const [selectedPm, setSelectedPm] = useState('npm')
-
-  const commands: Record<string, string> = {
-    npm: 'npx create-foliokit',
-    pnpm: 'pnpm create foliokit',
-    bun: 'bun create foliokit',
-  }
-
-  const currentCmd = commands[selectedPm] || commands.npm
+  const installCmd = 'npx create-foliokit'
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(currentCmd)
+      await navigator.clipboard.writeText(installCmd)
       setCopied(true)
       setTimeout(() => setCopied(false), 2000)
     } catch {
       const textarea = document.createElement('textarea')
-      textarea.value = currentCmd
+      textarea.value = installCmd
       document.body.appendChild(textarea)
       textarea.select()
       document.execCommand('copy')
@@ -32,55 +24,23 @@ export function Hero() {
   }
 
   return (
-    <section className="section-wrap" style={{ marginTop: '20px' }}>
+    <section className="section-wrap" style={{ marginTop: '14px' }}>
       <div className="hero-section dotted-frame">
-        {/* Subtle status badge */}
-        <div className="hero-badge-row">
-          <div className="hero-pill">
-            <span className="hero-pill-dot" />
-            <span>npm package: create-foliokit</span>
-          </div>
-        </div>
-
-        {/* Tagline */}
+        {/* Short, prominent tagline */}
         <h1 className="hero-tagline">
-          Your portfolio, built with{' '}
-          <span className="accent-gold">one command</span>.
+          Your portfolio, built with <span className="accent-emerald">one command</span>.
         </h1>
 
-        {/* Supporting description */}
+        {/* Concise one-sentence description */}
         <p className="hero-description">
-          FolioKit is a simple CLI that helps developers create their own minimal, customizable portfolio website without starting from scratch.
+          FolioKit is a simple CLI that helps developers create minimal, customizable portfolios without starting from scratch.
         </p>
 
-        {/* Command block with package manager tabs */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '22px' }}>
-          <div style={{ display: 'inline-flex', gap: '3px', marginBottom: '6px' }}>
-            {(['npm', 'pnpm', 'bun'] as const).map((pm) => (
-              <button
-                key={pm}
-                type="button"
-                onClick={() => setSelectedPm(pm)}
-                style={{
-                  fontSize: '10px',
-                  fontFamily: 'var(--mono-font)',
-                  padding: '2px 8px',
-                  borderRadius: '3px',
-                  border: '1px solid',
-                  borderColor: selectedPm === pm ? 'var(--lime)' : 'var(--border)',
-                  color: selectedPm === pm ? 'var(--lime)' : 'var(--text-muted)',
-                  background: selectedPm === pm ? 'var(--elevated)' : 'transparent',
-                  transition: 'all var(--interaction-duration) var(--interaction-ease)',
-                }}
-              >
-                {pm}
-              </button>
-            ))}
-          </div>
-
+        {/* Prominent installation command with copy button */}
+        <div className="hero-cmd-wrapper">
           <div className="hero-cmd-box">
             <span className="hero-cmd-prefix">$</span>
-            <code className="hero-cmd-text">{currentCmd}</code>
+            <code className="hero-cmd-text">{installCmd}</code>
             <button
               type="button"
               className={`copy-button ${copied ? 'is-copied' : ''}`}
@@ -89,12 +49,12 @@ export function Hero() {
             >
               {copied ? (
                 <>
-                  <Check size={13} aria-hidden="true" />
+                  <Check size={12} aria-hidden="true" />
                   <span>Copied</span>
                 </>
               ) : (
                 <>
-                  <Copy size={13} aria-hidden="true" />
+                  <Copy size={12} aria-hidden="true" />
                   <span>Copy</span>
                 </>
               )}
@@ -102,7 +62,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Minimal external links */}
+        {/* Compact GitHub & npm links */}
         <div className="hero-links">
           <a
             href="https://github.com/saurabhhdev/foliokit"
@@ -110,9 +70,9 @@ export function Hero() {
             rel="noopener noreferrer"
             className="hero-link-btn"
           >
-            <GitHubIcon size={13} />
-            <span>saurabhhdev/foliokit</span>
-            <ExternalLink size={10} style={{ opacity: 0.6 }} />
+            <GitHubIcon size={12} />
+            <span>GitHub</span>
+            <ExternalLink size={9} style={{ opacity: 0.5 }} />
           </a>
 
           <a
@@ -121,9 +81,9 @@ export function Hero() {
             rel="noopener noreferrer"
             className="hero-link-btn"
           >
-            <NpmIcon size={13} />
-            <span>create-foliokit v1.0.0</span>
-            <ExternalLink size={10} style={{ opacity: 0.6 }} />
+            <NpmIcon size={12} />
+            <span>npm v1.0.0</span>
+            <ExternalLink size={9} style={{ opacity: 0.5 }} />
           </a>
         </div>
       </div>
