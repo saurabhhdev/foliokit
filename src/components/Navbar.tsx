@@ -1,111 +1,79 @@
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
-import { GitHubIcon, NpmIcon } from './Icons'
+import { useState, useEffect } from 'react'
+import { Moon, Sun } from 'lucide-react'
+import { GitHubIcon } from './Icons'
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('foliokit-theme')
+      if (saved === 'light' || saved === 'dark') return saved
+    }
+    return 'dark'
+  })
 
-  const navLinks = [
-    { label: 'Features', href: '#features' },
-    { label: 'Commands', href: '#commands' },
-    { label: 'Inside', href: '#inside' },
-    { label: 'Architecture', href: '#architecture' },
-    { label: 'Creator', href: '#creator' },
-  ]
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light')
+    } else {
+      document.documentElement.removeAttribute('data-theme')
+    }
+    localStorage.setItem('foliokit-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+  }
 
   return (
-    <>
-      <header className="site-header">
-        <a href="#" className="wordmark" aria-label="FolioKit Home">
-          <span>FolioKit</span>
-          <span className="wordmark-dot">.</span>
-          <span className="wordmark-tag">v1.0.0</span>
+    <header className="site-header">
+      {/* Brand Wordmark matching reference */}
+      <a href="#" className="nav-wordmark" aria-label="FolioKit Home">
+        <span className="wordmark-lead">folio</span>
+        <span className="wordmark-dot">.</span>
+        <span className="wordmark-tail">kit</span>
+      </a>
+
+      {/* Right-aligned minimal action buttons matching reference */}
+      <div className="nav-actions-group">
+        {/* GitHub Button */}
+        <a
+          href="https://github.com/saurabhhdev/foliokit"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-btn nav-btn-icon"
+          title="GitHub Repository"
+          aria-label="FolioKit on GitHub"
+        >
+          <GitHubIcon size={16} />
         </a>
 
-        {/* Desktop Nav */}
-        <nav className="main-nav" aria-label="Main navigation">
-          {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link">
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        {/* npm Button with crisp text label */}
+        <a
+          href="https://www.npmjs.com/package/create-foliokit"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-btn nav-btn-npm"
+          title="npm Package"
+          aria-label="FolioKit on npm"
+        >
+          <span>npm</span>
+        </a>
 
-        {/* Action icons */}
-        <div className="nav-actions">
-          <a
-            href="https://github.com/saurabhhdev/foliokit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="icon-btn"
-            title="GitHub Repository"
-            aria-label="FolioKit on GitHub"
-          >
-            <GitHubIcon size={14} />
-          </a>
-          <a
-            href="https://www.npmjs.com/package/create-foliokit"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="icon-btn"
-            title="npm Package"
-            aria-label="FolioKit on npm"
-          >
-            <NpmIcon size={14} />
-          </a>
-        </div>
-
-        {/* Mobile menu button */}
+        {/* Theme Toggle Button (Moon / Sun) */}
         <button
           type="button"
-          className="menu-toggle"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={mobileMenuOpen}
+          onClick={toggleTheme}
+          className="nav-btn nav-btn-icon nav-theme-toggle"
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
-          {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          {theme === 'dark' ? (
+            <Moon size={15} strokeWidth={2} />
+          ) : (
+            <Sun size={15} strokeWidth={2} />
+          )}
         </button>
-      </header>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="mobile-nav-panel">
-          <nav className="mobile-nav-links" aria-label="Mobile navigation">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-          <div className="mobile-nav-actions">
-            <a
-              href="https://github.com/saurabhhdev/foliokit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="icon-btn"
-              aria-label="FolioKit on GitHub"
-            >
-              <GitHubIcon size={15} />
-            </a>
-            <a
-              href="https://www.npmjs.com/package/create-foliokit"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="icon-btn"
-              aria-label="FolioKit on npm"
-            >
-              <NpmIcon size={15} />
-            </a>
-            <span style={{ fontSize: '11px', color: 'var(--muted)', fontFamily: 'var(--mono-font)' }}>
-              v1.0.0 (Node &gt;= 22.12.0)
-            </span>
-          </div>
-        </div>
-      )}
-    </>
+      </div>
+    </header>
   )
 }

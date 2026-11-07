@@ -33,7 +33,7 @@ export function Hero() {
 
         {/* Concise one-sentence description */}
         <p className="hero-description">
-          FolioKit is a simple CLI that helps developers create minimal, customizable portfolios without starting from scratch.
+          FolioKit is a simple CLI that helps you to go from an empty folder to your own portfolio in one command .
         </p>
 
         {/* Prominent installation command with copy button */}
