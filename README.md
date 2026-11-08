@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="public/foliokit-preview.svg" alt="Original FolioKit landing page screenshot" width="100%" />
+  <img src="public/foliokit-preview.svg?v=1b47144" alt="Original FolioKit landing page screenshot" width="100%" />
 </p>
 <p align="center">
   <a href="https://create-foliokit.vercel.app/">🌐 Visit the landing page</a>
