@@ -34,8 +34,11 @@
   <rect width="1600" height="900" fill="url(#aura)"/>
   <ellipse cx="800" cy="731" rx="615" ry="42" fill="#00E890" fill-opacity=".25" filter="url(#glow)"/>
 
-  <!-- Floating browser chassis with a deep, illuminated lower edge -->
+  <!-- Offset rear shell adds a visible top and right bevel behind the floating display -->
   <g filter="url(#shadow)">
+    <path d="M130 126H1498L1530 150V680L1488 708H136C122.745 708 112 697.255 112 684V165L130 126Z" fill="#07150F" stroke="#1A704A" stroke-opacity=".72" stroke-width="2"/>
+    <path d="M130 126H1498L1530 150H164L130 165V126Z" fill="#174E38" stroke="#48D99A" stroke-opacity=".55"/>
+    <path d="M1488 142L1530 150V680L1488 708V142Z" fill="url(#side)" stroke="#39C98A" stroke-opacity=".45"/>
     <path d="M112 634H1488V684C1488 697.255 1477.25 708 1464 708H136C122.745 708 112 697.255 112 684V634Z" fill="url(#side)" stroke="#16774F" stroke-opacity=".8"/>
     <path d="M137 708H1464L1417 735H182L137 708Z" fill="#081C13" stroke="#1A6445" stroke-opacity=".48"/>
     <rect x="112" y="142" width="1376" height="554" rx="23" fill="#080A09" stroke="url(#edge)" stroke-width="2"/>
@@ -49,7 +52,7 @@
     <!-- browser bar -->
     <text x="151" y="180" fill="#F6F8F6" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="-1.3">folio<tspan fill="#32E89B">kit.</tspan></text>
     <rect x="1262" y="150" width="53" height="42" rx="8" fill="#0C0E0D" stroke="#606461" stroke-width="1.5"/>
-    <path d="M1288.5 160c-6 0-10.8 4.8-10.8 10.8 0 4.8 3.1 8.9 7.4 10.3.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.9 2 3.1 1.4.1-.8.5-1.4.8-1.7-2.4-.3-5-1.2-5-5.4 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10 10 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.2-2.6 5.1-5 5.4.4.4.8 1 .8 2.1v3.1c0 .3.2.6.7.5a10.8 10.8 0 0 0-3.5-21.1Z" fill="#F5F6F5" transform="translate(1277 158) scale(.88)"/>
+    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.49-2.7-1.08-2.7-1.08-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.22.82 1.22.82.72 1.22 1.88.87 2.34.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.65 7.65 0 0 1 8 4.88c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.19c0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z" fill="#F5F6F5" transform="translate(1280 163) scale(1.05)"/>
     <rect x="1325" y="150" width="81" height="42" rx="8" fill="#0C0E0D" stroke="#606461" stroke-width="1.5"/>
     <text x="1366" y="177" text-anchor="middle" fill="#F6F8F6" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="650">npm</text>
     <rect x="1416" y="150" width="53" height="42" rx="8" fill="#0C0E0D" stroke="#606461" stroke-width="1.5"/>

@@ -15,6 +15,11 @@
 <p align="center">
   <img src="public/foliokit-preview.svg" alt="FolioKit landing page shown as an elevated, emerald-lit 3D browser mockup" width="100%" />
 </p>
+<p align="center">
+  <a href="https://foliokit-template.vercel.app/">🌐 Visit the landing page</a>
+  &nbsp; • &nbsp;
+  <a href="https://saurabhhdev.vercel.app/">✨ View a live portfolio example</a>
+</p>
 
 ## Get started
 
