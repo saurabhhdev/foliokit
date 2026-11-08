@@ -19,8 +19,8 @@
       <path d="M64 0H0V64" stroke="#D7F8E7" stroke-opacity=".095" stroke-width="1"/>
     </pattern>
     <filter id="shadow" x="-20%" y="-30%" width="140%" height="180%">
-      <feGaussianBlur in="SourceAlpha" stdDeviation="27"/>
-      <feOffset dy="31"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="24"/>
+      <feOffset dy="23"/>
       <feComponentTransfer><feFuncA type="linear" slope=".76"/></feComponentTransfer>
       <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
@@ -32,15 +32,15 @@
 
   <rect width="1600" height="900" fill="url(#bg)"/>
   <rect width="1600" height="900" fill="url(#aura)"/>
-  <ellipse cx="800" cy="731" rx="615" ry="42" fill="#00E890" fill-opacity=".25" filter="url(#glow)"/>
+  <ellipse cx="800" cy="723" rx="615" ry="38" fill="#00E890" fill-opacity=".22" filter="url(#glow)"/>
 
   <!-- Offset rear shell adds a visible top and right bevel behind the floating display -->
   <g filter="url(#shadow)">
-    <path d="M130 126H1498L1530 150V680L1488 708H136C122.745 708 112 697.255 112 684V165L130 126Z" fill="#07150F" stroke="#1A704A" stroke-opacity=".72" stroke-width="2"/>
-    <path d="M130 126H1498L1530 150H164L130 165V126Z" fill="#174E38" stroke="#48D99A" stroke-opacity=".55"/>
-    <path d="M1488 142L1530 150V680L1488 708V142Z" fill="url(#side)" stroke="#39C98A" stroke-opacity=".45"/>
-    <path d="M112 634H1488V684C1488 697.255 1477.25 708 1464 708H136C122.745 708 112 697.255 112 684V634Z" fill="url(#side)" stroke="#16774F" stroke-opacity=".8"/>
-    <path d="M137 708H1464L1417 735H182L137 708Z" fill="#081C13" stroke="#1A6445" stroke-opacity=".48"/>
+    <path d="M122 134H1494L1510 150V683L1488 700H136C122.745 700 112 689.255 112 676V165L122 134Z" fill="#07150F" stroke="#1A704A" stroke-opacity=".72" stroke-width="2"/>
+    <path d="M122 134H1494L1510 150H148L122 165V134Z" fill="#174E38" stroke="#48D99A" stroke-opacity=".55"/>
+    <path d="M1488 142L1510 150V683L1488 700V142Z" fill="url(#side)" stroke="#39C98A" stroke-opacity=".45"/>
+    <path d="M112 634H1488V684C1488 693.255 1479.25 700 1464 700H136C122.745 700 112 689.255 112 676V634Z" fill="url(#side)" stroke="#16774F" stroke-opacity=".8"/>
+    <path d="M137 700H1464L1436 716H166L137 700Z" fill="#081C13" stroke="#1A6445" stroke-opacity=".48"/>
     <rect x="112" y="142" width="1376" height="554" rx="23" fill="#080A09" stroke="url(#edge)" stroke-width="2"/>
   </g>
 
@@ -48,7 +48,7 @@
     <rect x="113" y="143" width="1374" height="552" fill="url(#screen)"/>
     <rect x="113" y="201" width="1374" height="494" fill="url(#grid)"/>
     <path d="M112 201H1488" stroke="#C7F9DA" stroke-opacity=".15" stroke-dasharray="2 5"/>
-    <path d="M150 695V735M1450 695V735" stroke="#34D99A" stroke-opacity=".36"/>
+    <path d="M150 695V716M1450 695V716" stroke="#34D99A" stroke-opacity=".36"/>
     <!-- browser bar -->
     <text x="151" y="180" fill="#F6F8F6" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="-1.3">folio<tspan fill="#32E89B">kit.</tspan></text>
     <rect x="1262" y="150" width="53" height="42" rx="8" fill="#0C0E0D" stroke="#606461" stroke-width="1.5"/>
