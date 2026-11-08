@@ -89,6 +89,10 @@ The build output is in `dist/`. To deploy the website, use `npm run build` as th
 - [Live portfolio example](https://saurabhhdev.vercel.app/)
 - [GitHub repository](https://github.com/saurabhhdev/foliokit)
 
+## Credits
+
+The idea and design were taken from [deepakmodidev (Deepak Modi)](https://github.com/deepakmodidev).
+
 ## Author
 
 Built by [Saurabh Pandey](https://saurabhhdev.vercel.app/). Connect on [LinkedIn](https://www.linkedin.com/in/saurabh-pandey-685347384/).
