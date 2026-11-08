@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="190" y1="36" x2="1390" y2="888" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06140F"/><stop offset=".52" stop-color="#03100B"/><stop offset="1" stop-color="#010403"/>
+    </linearGradient>
+    <radialGradient id="aura" cx="0" cy="0" r="1" gradientTransform="matrix(0 528 -846 0 800 401)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#00D98B" stop-opacity=".32"/><stop offset="1" stop-color="#00A86A" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="128" y1="157" x2="1437" y2="697" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#58FFB6" stop-opacity=".83"/><stop offset=".5" stop-color="#19D68D" stop-opacity=".43"/><stop offset="1" stop-color="#62FFC2" stop-opacity=".82"/>
+    </linearGradient>
+    <linearGradient id="side" x1="180" y1="693" x2="1390" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#124D37"/><stop offset=".48" stop-color="#071C14"/><stop offset="1" stop-color="#17523D"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="800" y1="181" x2="800" y2="669" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101310"/><stop offset="1" stop-color="#080A09"/>
+    </linearGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" stroke="#D7F8E7" stroke-opacity=".095" stroke-width="1"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="27"/>
+      <feOffset dy="31"/>
+      <feComponentTransfer><feFuncA type="linear" slope=".76"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="29"/>
+    </filter>
+    <clipPath id="clip"><rect x="112" y="142" width="1376" height="554" rx="23"/></clipPath>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#aura)"/>
+  <ellipse cx="800" cy="731" rx="615" ry="42" fill="#00E890" fill-opacity=".25" filter="url(#glow)"/>
+
+  <!-- Floating browser chassis with a deep, illuminated lower edge -->
+  <g filter="url(#shadow)">
+    <path d="M112 634H1488V684C1488 697.255 1477.25 708 1464 708H136C122.745 708 112 697.255 112 684V634Z" fill="url(#side)" stroke="#16774F" stroke-opacity=".8"/>
+    <path d="M137 708H1464L1417 735H182L137 708Z" fill="#081C13" stroke="#1A6445" stroke-opacity=".48"/>
+    <rect x="112" y="142" width="1376" height="554" rx="23" fill="#080A09" stroke="url(#edge)" stroke-width="2"/>
+  </g>
+
+  <g clip-path="url(#clip)">
+    <rect x="113" y="143" width="1374" height="552" fill="url(#screen)"/>
+    <rect x="113" y="201" width="1374" height="494" fill="url(#grid)"/>
+    <path d="M112 201H1488" stroke="#C7F9DA" stroke-opacity=".15" stroke-dasharray="2 5"/>
+    <path d="M150 695V735M1450 695V735" stroke="#34D99A" stroke-opacity=".36"/>
+    <!-- browser bar -->
+    <text x="151" y="180" fill="#F6F8F6" font-family="Inter,Arial,sans-serif" font-size="25" font-weight="700" letter-spacing="-1.3">folio<tspan fill="#32E89B">kit.</tspan></text>
+    <rect x="1262" y="150" width="53" height="42" rx="8" fill="#0C0E0D" stroke="#606461" stroke-width="1.5"/>
+    <path d="M1288.5 160c-6 0-10.8 4.8-10.8 10.8 0 4.8 3.1 8.9 7.4 10.3.5.1.7-.2.7-.5v-2c-3 .7-3.7-1.3-3.7-1.3-.5-1.2-1.2-1.5-1.2-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.9 2 3.1 1.4.1-.8.5-1.4.8-1.7-2.4-.3-5-1.2-5-5.4 0-1.2.4-2.1 1.1-2.9-.1-.3-.5-1.4.1-2.9 0 0 .9-.3 3 1.1a10 10 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.5.2 2.6.1 2.9.7.8 1.1 1.7 1.1 2.9 0 4.2-2.6 5.1-5 5.4.4.4.8 1 .8 2.1v3.1c0 .3.2.6.7.5a10.8 10.8 0 0 0-3.5-21.1Z" fill="#F5F6F5" transform="translate(1277 158) scale(.88)"/>
+    <rect x="1325" y="150" width="81" height="42" rx="8" fill="#0C0E0D" stroke="#606461" stroke-width="1.5"/>
+    <text x="1366" y="177" text-anchor="middle" fill="#F6F8F6" font-family="Inter,Arial,sans-serif" font-size="17" font-weight="650">npm</text>
+    <rect x="1416" y="150" width="53" height="42" rx="8" fill="#0C0E0D" stroke="#606461" stroke-width="1.5"/>
+    <path d="M1442.5 161.5a9.5 9.5 0 1 0 8.9 12.7 8 8 0 0 1-10.7-10.7c.6-.8 1.1-1.4 1.8-2Z" stroke="#F6F8F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- hero copy -->
+    <text x="800" y="338" text-anchor="middle" fill="#F6F8F6" font-family="Inter,Arial,sans-serif" font-size="45" font-weight="720" letter-spacing="-2.4">Your portfolio, built with <tspan fill="#2BE99B">one command.</tspan></text>
+    <text x="800" y="386" text-anchor="middle" fill="#C4C8C5" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="400">create-foliokit takes you from an empty folder to your own portfolio</text>
+    <text x="800" y="416" text-anchor="middle" fill="#C4C8C5" font-family="Inter,Arial,sans-serif" font-size="20" font-weight="400">with a simple, interactive setup.</text>
+
+    <!-- terminal card -->
+    <rect x="547" y="453" width="506" height="66" rx="12" fill="#060807" stroke="#555B57" stroke-width="1.5"/>
+    <text x="570" y="494" fill="#36E69C" font-family="'JetBrains Mono',Consolas,monospace" font-size="21" font-weight="600">$</text>
+    <text x="600" y="494" fill="#F6F8F6" font-family="'JetBrains Mono',Consolas,monospace" font-size="20" font-weight="600">npx create-foliokit</text>
+    <rect x="847" y="465" width="187" height="42" rx="8" fill="#111412" stroke="#5A605C" stroke-width="1.3"/>
+    <rect x="860" y="477" width="14" height="13" rx="2" stroke="#DDE2DE" stroke-width="1.6"/>
+    <path d="M864 473h14v13" stroke="#DDE2DE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="916" y="492" text-anchor="middle" fill="#F0F2F0" font-family="Inter,Arial,sans-serif" font-size="14" font-weight="550">Copy command</text>
+
+    <!-- action buttons -->
+    <rect x="592" y="542" width="174" height="42" rx="8" fill="#080A09" stroke="#646965" stroke-opacity=".9"/>
+    <circle cx="613" cy="563" r="8" fill="#F5F7F5"/>
+    <path d="M611 559.5v7l6-3.5-6-3.5Z" fill="#080A09"/>
+    <text x="674" y="568" text-anchor="middle" fill="#E6E9E7" font-family="Inter,Arial,sans-serif" font-size="15">GitHub</text>
+    <path d="M737 552h8v8M745 552l-9 9" stroke="#ADB3AE" stroke-width="1.4"/>
+    <rect x="788" y="542" width="220" height="42" rx="8" fill="#080A09" stroke="#646965" stroke-opacity=".9"/>
+    <text x="887" y="568" text-anchor="middle" fill="#E6E9E7" font-family="Inter,Arial,sans-serif" font-size="15">See in action</text>
+    <path d="M977 552h8v8M985 552l-9 9" stroke="#ADB3AE" stroke-width="1.4"/>
+
+    <!-- subtle interface details -->
+    <circle cx="159" cy="225" r="2" fill="#35E69C" fill-opacity=".75"/>
+    <circle cx="1442" cy="650" r="2" fill="#35E69C" fill-opacity=".6"/>
+  </g>
+
+  <!-- floating specular accents -->
+  <path d="M153 143H403" stroke="#D2FFE7" stroke-opacity=".45" stroke-width="1.5"/>
+  <path d="M1258 695H1433" stroke="#76FFC2" stroke-opacity=".4" stroke-width="1.5"/>
+  <circle cx="1470" cy="373" r="2" fill="#74FFC0" fill-opacity=".8"/>
+  <circle cx="120" cy="542" r="1.5" fill="#74FFC0" fill-opacity=".7"/>
+</svg>

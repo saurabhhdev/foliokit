@@ -1,40 +1,93 @@
-# FolioKit Website
+# FolioKit
 
-The official website for [FolioKit](https://www.npmjs.com/package/create-foliokit), a CLI that scaffolds customizable developer portfolios.
+<p align="center">
+  <strong>A developer portfolio, from an empty folder to your own in one command.</strong><br />
+  FolioKit is a lightweight CLI that scaffolds a polished, responsive portfolio you can make your own.
+</p>
 
-## Stack
+<p align="center">
+  <a href="https://github.com/saurabhhdev/foliokit"><img alt="GitHub repository" src="https://img.shields.io/badge/GitHub-foliokit-181717?logo=github&logoColor=white"></a>
+  <a href="https://www.npmjs.com/package/create-foliokit"><img alt="npm package" src="https://img.shields.io/npm/v/create-foliokit?color=cb3837&logo=npm&logoColor=white"></a>
+  <a href="https://www.npmjs.com/package/create-foliokit"><img alt="npm downloads" src="https://img.shields.io/npm/dm/create-foliokit?color=cb3837&logo=npm&logoColor=white"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-38c98b.svg"></a>
+</p>
 
-- React 19 and TypeScript
-- Vite 8
-- Lucide React icons and CSS
-- External assets: Google Fonts, Flaticon UI icons, and Skill Icons
+<p align="center">
+  <img src="public/foliokit-preview.svg" alt="FolioKit landing page shown as an elevated, emerald-lit 3D browser mockup" width="100%" />
+</p>
 
-## Requirements
+## Get started
 
-Use Node.js 22.12.0 or later. No environment variables are required.
-
-## Local development
+Run the interactive setup, give your project a name, and start the development server:
 
 ```bash
+npx create-foliokit
+cd my-portfolio
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) to see your new portfolio. To install the CLI globally instead, run `npm install -g create-foliokit`, then use `foliokit create`.
+
+## Make it yours
+
+The generated portfolio is designed to be easy to personalize. Update its `data.ts` file with your name, bio, skills, experience, education, projects, testimonials, and links. Replace the starter images and adjust the sections to fit your story.
+
+The template includes a project gallery, responsive layout, light and dark themes, and a contact area. No API keys or environment variables are needed to get started.
+
+## What’s included
+
+- **A portfolio scaffold, ready to edit** — introduce yourself, share your work, and add your resume.
+- **Project showcase** — highlight projects with links to demos and source code.
+- **Skills and experience** — organize technologies, work history, and education.
+- **Social links and contact** — make it easy for people to find and reach you.
+- **Testimonials** — add recommendations from colleagues, clients, or mentors.
+- **Responsive design** — a considered layout for desktop, tablet, and mobile.
+- **Light and dark themes** — let visitors choose the look that suits them.
+
+## Built with
+
+The generated portfolio uses **React 19**, **TypeScript**, **Vite 8**, and **CSS**. This repository contains the FolioKit landing page, built with React 19, TypeScript, Vite 8, and Lucide icons.
+
+## Run this website locally
+
+Requires **Node.js 22.12.0 or later**.
+
+```bash
+git clone https://github.com/saurabhhdev/foliokit.git
+cd foliokit
 npm ci
 npm run dev
 ```
 
-## Production build
+Create and preview a production build with:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-The production output is written to `dist/`. The build script runs TypeScript project checks before Vite creates the production bundle.
+The build output is in `dist/`. To deploy the website, use `npm run build` as the build command and `dist` as the output directory. Vercel configuration is included in `vercel.json`.
 
-## Deployment
+## CLI commands
 
-Deploy the repository root with `npm run build` as the build command and `dist` as the output directory. `vercel.json` configures Vite framework detection and SPA fallback for Vercel; other static hosts should publish `dist` and use an equivalent SPA fallback if needed.
+| Command | Description |
+| --- | --- |
+| `npx create-foliokit` | Start the interactive portfolio setup. |
+| `foliokit create` | Open the setup wizard when the CLI is installed globally. |
+| `foliokit --help` | Show CLI usage and options. |
+| `foliokit --version` | Show the installed CLI version. |
 
-The production domain and social preview artwork have not been configured. Add the canonical URL and absolute Open Graph/Twitter image metadata in `index.html` once those are finalized. A sitemap should be added at that time if the site is deployed on a stable public domain.
+## Links
+
+- [FolioKit on npm](https://www.npmjs.com/package/create-foliokit)
+- [Live landing page](https://foliokit-template.vercel.app/)
+- [Live portfolio example](https://saurabhhdev.vercel.app/)
+- [GitHub repository](https://github.com/saurabhhdev/foliokit)
+
+## Author
+
+Built by [Saurabh Pandey](https://saurabhhdev.vercel.app/). Connect on [LinkedIn](https://www.linkedin.com/in/saurabh-pandey-685347384/).
 
 ## License
 
-Distributed under the [MIT License](https://opensource.org/licenses/MIT). Copyright &copy; 2026 Saurabh Pandey.
+FolioKit is distributed under the [MIT License](LICENSE). Copyright © 2026 Saurabh Pandey.
