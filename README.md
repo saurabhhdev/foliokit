@@ -16,7 +16,7 @@
   <img src="public/foliokit-preview.svg" alt="FolioKit landing page shown as an elevated, emerald-lit 3D browser mockup" width="100%" />
 </p>
 <p align="center">
-  <a href="https://foliokit-template.vercel.app/">🌐 Visit the landing page</a>
+  <a href="https://create-foliokit.vercel.app/">🌐 Visit the landing page</a>
   &nbsp; • &nbsp;
   <a href="https://saurabhhdev.vercel.app/">✨ View a live portfolio example</a>
 </p>
@@ -85,7 +85,7 @@ The build output is in `dist/`. To deploy the website, use `npm run build` as th
 ## Links
 
 - [FolioKit on npm](https://www.npmjs.com/package/create-foliokit)
-- [Live landing page](https://foliokit-template.vercel.app/)
+- [Live landing page](https://create-foliokit.vercel.app/)
 - [Live portfolio example](https://saurabhhdev.vercel.app/)
 - [GitHub repository](https://github.com/saurabhhdev/foliokit)
 
